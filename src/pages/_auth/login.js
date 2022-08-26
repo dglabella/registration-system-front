@@ -114,7 +114,7 @@ const Login = (props) => {
                                 <div className="d-flex justify-content-center align-items-center mt-4">
                                     <span className="fw-normal">
                                         Eres Nuevo? 
-                                        <Card.Link as={Link} to={Routes.Usuarios.path} className="fw-bold">
+                                        <Card.Link as={Link} to={Routes.Registro.path} className="fw-bold">
                                             {`  Crea Tu Usuario`}
                                         </Card.Link>
                                     </span>

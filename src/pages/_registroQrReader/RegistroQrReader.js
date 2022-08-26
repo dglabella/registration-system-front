@@ -28,6 +28,7 @@ const RegistroQrReader = () => {
         
         if(result!==undefined){
             setLectura(result.text);
+            //camnbiar estado y el useEffect disparar post de registro!!!
             //debería aparecer un modal dando la bienvenida!!!!
         }
         

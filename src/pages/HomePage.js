@@ -20,7 +20,8 @@ import ServerError from "./examples/ServerError";
 //MIS PAGINAS
 import Usuarios from './Usuarios';
 import Login from "./_auth/login";
-import Registro from './_registro/Registro';
+import Registro from "./_auth/registro";
+import RegistroQrScanner from './_registroQrScanner/RegistroQrScanner';
 import RegistroQrReader from './_registroQrReader/RegistroQrReader';
 
 // documentation pages
@@ -125,8 +126,9 @@ export default () => (
     
     {/*-----------------------------------------   MIS   RUTAS    -------------------------------------------------------*/}
     <RouteWithSidebar exact path={Routes.Usuarios.path} component={Usuarios} />
-    <RouteWithSidebar exact path={Routes.Registro.path} component={Registro} />
+    <RouteWithLoader exact path={Routes.Registro.path} component={Registro} />
     <RouteWithSidebar exact path={Routes.RegistroQrReader.path} component={RegistroQrReader} />
+    <RouteWithSidebar exact path={Routes.RegistroQrScanner.path} component={RegistroQrScanner} />
     <RouteWithLoader exact path={Routes.Login.path} component={Login} /> 
 
 

@@ -10,9 +10,9 @@ import GitHubButton from 'react-github-btn';
 
 import { Routes } from "../routes";
 import ThemesbergLogoIcon from "../assets/img/themesberg.svg";
-import ThemesbergLogo from "../assets/img/themesberg-logo.svg";
-import MockupPresentation from "../assets/img/mockup-presentation.png";
-import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
+import fmnLogo from "../assets/img/misImagenes/Img-Footer-FCFMyN.png";
+import MockupPresentation from "../assets/img/misImagenes/logoazul.png";
+import QRHero from "../assets/img/misImagenes/qrSecondary.png";
 import MapboxImg from "../assets/img/mockup-map-presentation.png";
 import CalendarImg from "../assets/img/mockup-calendar-presentation.png";
 import ReactMockupImg from "../assets/img/react-mockup.png";
@@ -82,21 +82,19 @@ export default () => {
       <Navbar variant="dark" expand="lg" bg="dark" className="navbar-transparent navbar-theme-primary sticky-top">
         <Container className="position-relative justify-content-between px-3">
           <Navbar.Brand as={HashLink} to="#home" className="me-lg-3 d-flex align-items-center">
-            <Image src={ReactHero} />
-            <span className="ms-2 brand-text d-none d-md-inline">Volt React</span>
+            <Image src={QRHero} />
+            <span className="ms-2 brand-text d-none d-md-inline">i-UNSL</span>
           </Navbar.Brand>
 
           <div className="d-flex align-items-center">
             <Navbar.Collapse id="navbar-default-primary">
               <Nav className="navbar-nav-hover align-items-lg-center">
-                <Nav.Link as={HashLink} to="#features">Features</Nav.Link>
-                <Nav.Link as={HashLink} to="#pages">Pages</Nav.Link>
-                <Nav.Link as={HashLink} to="#folder" className="d-sm-none d-xl-inline">Folder Structure</Nav.Link>
-                <Nav.Link as={HashLink} to="#getting-started">Getting Started</Nav.Link>
-                <Nav.Link as={HashLink} to="#download">Upgrade to Pro</Nav.Link>
+                <Nav.Link as={HashLink} to={Routes.Login.path}>LogIn</Nav.Link>
+                <Nav.Link as={HashLink} to={Routes.Registro.path}>Registro de Usuarios</Nav.Link>
+                <Nav.Link href="https://fmn.unsl.edu.ar/">FCFMyN</Nav.Link>
+                <Nav.Link as={HashLink} to="#download">Quienes Somos...</Nav.Link>
               </Nav>
             </Navbar.Collapse>
-            <Button as={HashLink} to="#download" variant="outline-white" className="ms-3"><FontAwesomeIcon icon={faDownload} className="me-1" /> Download</Button>
           </div>
         </Container>
       </Navbar>
@@ -104,10 +102,11 @@ export default () => {
         <Container>
           <Row>
             <Col xs={12} className="text-center">
-              <div className="react-big-icon d-none d-lg-block"><span className="fab fa-react"></span></div>
-              <h1 className="fw-bolder text-secondary">Volt React Dashboard</h1>
-              <p className="text-muted fw-light mb-5 h5">Open source powered by React.js and Bootstrap 5</p>
-              <div className="d-flex align-items-center justify-content-center">
+              {/*<div className="react-big-icon d-none d-lg-block"><span className="fab fa-react"></span></div>*/}
+              <h1 className="fw-bolder text-secondary">i-UNSL</h1>
+              <p className="text-muted fw-light mb-4 h5">Registro de Presencialidad</p>
+              
+              {/*<div className="d-flex align-items-center justify-content-center">
                 <Button variant="secondary" as={Link} to={Routes.DashboardOverview.path} className="text-dark me-3">
                   Explore dashboard <FontAwesomeIcon icon={faExternalLinkAlt} className="d-none d-sm-inline ms-1" />
                 </Button>
@@ -120,24 +119,28 @@ export default () => {
                     <p className="text-muted font-small m-0">A Themesberg production</p>
                   </a>
                 </div>
-              </div>
+              </div>*/}
             </Col>
           </Row>
-          <figure className="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
+          {/*<figure className="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
             <svg className="fill-soft" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
               <path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z" />
             </svg>
-          </figure>
+          </figure>*/}
         </Container>
       </section>
       <div className="section pt-0">
         <Container className="mt-n10 mt-lg-n12 z-2">
           <Row className="justify-content-center">
             <Col xs={12}>
-              <Image src={MockupPresentation} alt="Mockup presentation" />
+              <Image src={MockupPresentation} height={100} className="rounded mx-auto d-block mb-4" alt="Mockup presentation" />
             </Col>
+            <Col xs={12} className="text-center ">
+              <h1 className="fw-bolder text-secondary justify-content-center">Universidad Nacional de San Luis</h1>
+            </Col>
+            
           </Row>
-          <Row className="justify-content-center mt-5 mt-lg-6">
+          {/*<Row className="justify-content-center mt-5 mt-lg-6">
             <Col xs={6} md={3} className="text-center mb-4">
               <div className="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle mb-4">
                 <FontAwesomeIcon icon={faPager} className="text-secondary" />
@@ -166,10 +169,10 @@ export default () => {
               <h3 className="fw-bolder">Bootstrap 5</h3>
               <p className="text-gray">CSS Framework</p>
             </Col>
-          </Row>
+            </Row>*/}
         </Container>
       </div>
-      <section className="section section-md bg-soft pt-lg-3" id="features">
+      {/*<section className="section section-md bg-soft pt-lg-3" id="features">
         <Container>
           <Row className="justify-content-between align-items-center mb-5 mb-lg-7">
             <Col lg={5} className="order-lg-2 mb-5 mb-lg-0">
@@ -478,10 +481,10 @@ export default () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section>*/}
       <footer className="footer py-6 bg-dark text-white">
         <Container>
-          <Row>
+          {/*<Row>
             <Col md={4}>
               <Navbar.Brand as={HashLink} to="#home" className="me-lg-3 mb-3 d-flex align-items-center">
                 <Image src={ReactHero} />
@@ -524,15 +527,19 @@ export default () => {
               </form>
               <p className="text-muted font-small m-0">We’ll never share your details. See our <Card.Link className="text-white" href="#">Privacy Policy</Card.Link></p>
             </Col>
-          </Row>
-          <hr className="bg-gray my-5" />
+          </Row>*/}
+
+          
           <Row>
-            <Col className="mb-md-2">
-              <Card.Link href="https://themesberg.com" target="_blank" className="d-flex justify-content-center">
-                <Image src={ThemesbergLogo} height={35} className="d-block mx-auto mb-3" alt="Themesberg Logo" />
+          <Col className="mb-md-2">
+              <Card.Link href="https://fmn.unsl.edu.ar/" target="_blank" className="d-flex justify-content-center">
+                <Image src={fmnLogo} height={50} className="d-block mx-auto mb-3" alt="fmn Logo" />
               </Card.Link>
+            </Col>
+            <hr className="bg-gray my-5" />
+            <Col className="mb-md-2">
               <div className="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                <p className="font-weight-normal font-small mb-0">Copyright © Themesberg 2019-<span className="current-year">2021</span>. All rights reserved.</p>
+                <p className="font-weight-normal font-small mb-0">Copyright © fmn 2019-<span className="current-year">2026</span>. All rights reserved.</p>
               </div>
             </Col>
           </Row>
