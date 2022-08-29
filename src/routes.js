@@ -22,6 +22,7 @@ export const Routes = {
     Login:{ path:"/login"},
     Registro: {path:"/registro"},
     RegistroQrReader: {path:"/registroQrReader"},
+    RegistroQrScanner: {path:"/registroQrScanner"},
 
 
     // docs

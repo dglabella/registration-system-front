@@ -15,7 +15,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from "react-router-dom";
+import { HashRouter, BrowserRouter } from "react-router-dom";
 
 // core styles
 import "./scss/volt.scss";
@@ -37,10 +37,10 @@ ReactDOM.render(
   <UsuariosState>
     <AlertaState>
       <AuthContext>
-      <HashRouter>
+      <BrowserRouter>
           <ScrollToTop />
           <HomePage />
-        </HashRouter>
+          </BrowserRouter>
       </AuthContext>
     </AlertaState>
   </UsuariosState>,
