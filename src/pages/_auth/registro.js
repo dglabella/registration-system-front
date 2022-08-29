@@ -31,21 +31,28 @@ const Registro = (props) => {
     },[mensaje, autenticado, props.history ]);*/
 
     //State para inicio de sesion
-    const [usuario, setUsuario] = useState({
-        nombre:'',
-        apellido:'',
-        email: '',
+    const [user, setUser] = useState({
+        personName:'',
+        personLastName:'',
+        dni: '',
+        userName:'',
         password: '',
         confirmPassword:''
     });
 
+    useEffect(()=>{
+        if(mensaje){
+          mostrarAlerta(mensaje.msg, mensaje.categoria);
+        }  
+    },[mensaje]);
+
     // extraigo los datos para utilizarlos más facil
-    const { nombre, apellido, email, password, confirmPassword } = usuario;
+    const { personName, personLastName, dni, userName, password, confirmPassword } = user;
 
     //Toma los cambios en el formulario y actualiza el estado de inicio de Sesión
     const onChange = (e) => {
-        setUsuario({
-            ...usuario, 
+        setUser({
+            ...user, 
             [e.target.name] : e.target.value
         });
     }
@@ -56,7 +63,7 @@ const Registro = (props) => {
         e.preventDefault();
         
         //Validamos que no haya campos vacios
-        if(nombre.trim()==='' || apellido.trim()==='' || email.trim()==='' || password.trim()==='' || confirmPassword.trim()===''){
+        if(personName.trim()==='' || personLastName.trim()==='' || dni.trim()==='' || userName.trim()==='' || password.trim()==='' || confirmPassword.trim()===''){
             mostrarAlerta('Todos Los Campos Son Obligatorios', 'danger');
             return;
         }
@@ -71,8 +78,8 @@ const Registro = (props) => {
             mostrarAlerta('El password y su confirmación deben ser iguales', 'danger');
             return;    
         }
-
-        registrarUsuario({nombre, apellido, email, password});
+    
+        registrarUsuario({personName, personLastName, userName, dni, password});
         //console.log("Submiteando usuario...");
 
     }
@@ -98,28 +105,25 @@ const Registro = (props) => {
                                     <Form.Group id="gnombre" className="mb-4">
                                         <Form.Label>Nombre</Form.Label>
                                         <InputGroup>
-                                            <InputGroup.Text>
-                                                <FontAwesomeIcon icon={faSignature} />
-                                            </InputGroup.Text>
-                                            <Form.Control autoFocus  type="text"  id="nombre" name="nombre" value={nombre} onChange={onChange}placeholder="Nombre" />
+                                            <Form.Control autoFocus  type="text"  id="personName" name="personName" value={personName} onChange={onChange}/>
                                         </InputGroup>
                                     </Form.Group>
                                     <Form.Group id="gapellido" className="mb-4">
                                         <Form.Label>Apellido</Form.Label>
                                         <InputGroup>
-                                            <InputGroup.Text>
-                                                <FontAwesomeIcon icon={faSignature} />
-                                            </InputGroup.Text>
-                                            <Form.Control autoFocus  type="text" id="apellido" name="apellido" value={apellido} onChange={onChange} placeholder="Apellido" />
+                                            <Form.Control autoFocus  type="text" id="personLastName" name="personLastName" value={personLastName} onChange={onChange} />
                                         </InputGroup>
                                     </Form.Group>
-                                    <Form.Group id="gemail" className="mb-4">
-                                        <Form.Label>Correo</Form.Label>
+                                    <Form.Group id="gdni" className="mb-4">
+                                        <Form.Label>DNI</Form.Label>
                                         <InputGroup>
-                                            <InputGroup.Text>
-                                                <FontAwesomeIcon icon={faEnvelope} />
-                                            </InputGroup.Text>
-                                            <Form.Control autoFocus  type="email" id="email" name="email"  value={email} onChange={onChange} placeholder="correo@ultramail.com" />
+                                            <Form.Control autoFocus  type="text" id="dni" name="dni"  value={dni} onChange={onChange} placeholder="Nro. de documento sin puntos" />
+                                        </InputGroup>
+                                    </Form.Group>
+                                    <Form.Group id="gusuario" className="mb-4">
+                                        <Form.Label>Usuario</Form.Label>
+                                        <InputGroup>
+                                            <Form.Control  type="text" id="userName" name="userName" value={userName} onChange={onChange}/>
                                         </InputGroup>
                                     </Form.Group>
                                     <Form.Group id="gpassword" className="mb-4">
@@ -128,23 +132,23 @@ const Registro = (props) => {
                                             <InputGroup.Text>
                                                 <FontAwesomeIcon icon={faUnlockAlt} />
                                             </InputGroup.Text>
-                                            <Form.Control  type="password" id="password" name="password" value={password} onChange={onChange} placeholder="Password" />
+                                            <Form.Control  type="password" id="password" name="password" value={password} onChange={onChange}/>
                                         </InputGroup>
                                     </Form.Group>
                                     <Form.Group id="gconfirmPassword" className="mb-4">
-                                        <Form.Label>Confirma Password</Form.Label>
+                                        <Form.Label>Repita Password</Form.Label>
                                         <InputGroup>
                                             <InputGroup.Text>
                                                 <FontAwesomeIcon icon={faUnlockAlt} />
                                             </InputGroup.Text>
-                                            <Form.Control  type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={onChange} placeholder="Confirma Password" />
+                                            <Form.Control  type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={onChange} />
                                         </InputGroup>
                                     </Form.Group>
                                     
                                     {alerta ? <Alert variant={alerta.categoria}> {alerta.msg} </Alert>: null}
 
                                     <Button variant="primary" type="submit" className="w-100">
-                                        Sign up
+                                        Registrar Usuario
                                     </Button>
                                 </Form>
 

@@ -5,16 +5,20 @@ export default (state, action)=>{
     switch(action.type){
         case LOGIN_EXITOSO:
         case REGISTRO_EXITOSO: 
-            localStorage.setItem('token', action.payload.token);
+            //localStorage.setItem('token', action.payload.token);
+            const alerta = {
+                msg:"Usuario Registrado",
+                categoria:"secondary"
+            }
             return{
                 ...state,
-                autenticado:true,
-                mensaje:null,  
+                autenticado:false,
+                mensaje:alerta,  
         }
         case CERRAR_SESION:
         case LOGIN_ERROR:
         case REGISTRO_ERROR: 
-            localStorage.removeItem('token');
+            //localStorage.removeItem('token');
             return{
                 ...state,
                 token:null,

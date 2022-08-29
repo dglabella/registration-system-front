@@ -103,6 +103,8 @@ export default (props = {}) => {
 
               <NavItem title="Registro" link={Routes.Registro.path} icon={faCalendarCheck} />
 
+              <NavItem title="RegistroQrSanner" link={Routes.RegistroQrScanner.path} icon={faCalendarCheck} />
+
               <NavItem title="RegistroQrReader" link={Routes.RegistroQrReader.path} icon={faCalendarCheck} />
 
               <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} />

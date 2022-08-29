@@ -19,7 +19,7 @@ const AuthState = (props) => {
     
 
     //Retornar Usuario Autenticado
-    const usuarioAutenticado = async ()=>{
+    /*const usuarioAutenticado = async ()=>{
         const token = localStorage.getItem('token');
         if(token){
             //coloco el token en el encabezado para enviarlo
@@ -27,10 +27,10 @@ const AuthState = (props) => {
         }
         try{
             const respuesta = await clienteAxios.get('/api/auth');
-            //console.log(respuesta.data.usuario);
+            console.log(respuesta.data.user);
             dispatch({
                 type:OBTENER_USUARIO,
-                payload: respuesta.data.usuario
+                payload: respuesta.data.user
             });
         } catch (error) {
             //console.log(error.response);
@@ -38,25 +38,28 @@ const AuthState = (props) => {
                 type:LOGIN_ERROR,    
             });    
         }
-    }
+    }*/
 
     //Registrar Usuario
     const registrarUsuario = async (datos) => {
         try {
-            const respuesta = await clienteAxios.post('/api/usuarios', datos);
+            const respuesta = await clienteAxios.post('/users', datos);
             console.log(respuesta.data);
             dispatch({
                 type:REGISTRO_EXITOSO,
                 payload:respuesta.data 
             });
+
+            //console.log(respuesta.data.user);
             
             //Obtener Usuario Autenticado
             //usuarioAutenticado();
 
         } catch (error) {
-            //console.log(error);
+            console.log(error);
             const alerta = {
-                msg:error.response.data.msg,
+                //msg:error.response.data.msg,
+                msg:error.message,
                 categoria:"danger"
             }
             dispatch({
@@ -69,7 +72,7 @@ const AuthState = (props) => {
     //Cuando el usuario inicia sesión
     const iniciarSesion = async (usuario)=>{
         try {
-            const respuesta = await clienteAxios.post('/usuarios/login', usuario);
+            const respuesta = await clienteAxios.post('/login', usuario);
             console.log(respuesta.data);    
             /*dispatch({
                 type:LOGIN_EXITOSO,
@@ -109,7 +112,7 @@ const AuthState = (props) => {
                 mensaje:state.mensaje,
                 registrarUsuario,
                 iniciarSesion,
-                usuarioAutenticado,
+                //usuarioAutenticado,
                 cerrarSesion
             }}
         >
