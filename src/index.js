@@ -30,19 +30,25 @@ import ScrollToTop from "./components/ScrollToTop";
 
 //----------------- MIS IMPORTS -----------------------------------------------//
 import UsuariosState from "./context/usuarios/usuariosState";
-import AlertaState from "./context/alerta/alertaState";
-import AuthContext from "./context/autenticacion/authState";
+import PersonalState from './context/personal/personalState';
+import AlertState from "./context/alerta/alertState";
+import AuthState from "./context/autenticacion/authState";
+import DependenciesState from "./context/dependencies/dependenciesState";
 
 ReactDOM.render(
-  <UsuariosState>
-    <AlertaState>
-      <AuthContext>
-      <BrowserRouter>
-          <ScrollToTop />
-          <HomePage />
-          </BrowserRouter>
-      </AuthContext>
-    </AlertaState>
-  </UsuariosState>,
+  <DependenciesState>
+    <PersonalState>
+      <UsuariosState>
+        <AlertState>
+          <AuthState>
+            <BrowserRouter>
+              <ScrollToTop />
+              <HomePage />
+            </BrowserRouter>
+          </AuthState>
+        </AlertState>
+      </UsuariosState>
+    </PersonalState>
+  </DependenciesState>,
   document.getElementById("root")
 );

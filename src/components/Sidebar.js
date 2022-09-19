@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket, faAddressCard, faUsers, faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket, faAddressCard, faUsers, faCalendarCheck, faUser, faUserSecret, faUsersCog, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -99,13 +99,17 @@ export default (props = {}) => {
             <Nav className="flex-column pt-3 pt-md-0">
               <NavItem title="Inicio" link={Routes.Presentation.path} image={ReactHero} />
 
-              <NavItem title="Usuarios" link={Routes.Usuarios.path} icon={faChartPie} />
+              <NavItem title="Ingreso" link={Routes.Entrance.path} icon={faDoorOpen} />
 
-              <NavItem title="Registro" link={Routes.Registro.path} icon={faCalendarCheck} />
+              <NavItem title="Personal" link={Routes.Personal.path} icon={faUsers} />
 
-              <NavItem title="RegistroQrSanner" link={Routes.RegistroQrScanner.path} icon={faCalendarCheck} />
+              <NavItem title="Usuarios" link={Routes.Users.path} icon={faUsersCog} />
 
-              <NavItem title="RegistroQrReader" link={Routes.RegistroQrReader.path} icon={faCalendarCheck} />
+              <NavItem title="Registro Usuarios" link={Routes.UserRegistry.path} icon={faCalendarCheck} />
+
+              {/*<NavItem title="RegistroQrSanner" link={Routes.RegistroQrScanner.path} icon={faCalendarCheck} />
+
+                <NavItem title="RegistroQrReader" link={Routes.RegistroQrReader.path} icon={faCalendarCheck} />*/}
 
               <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} />
               {/*<NavItem external title="Messages" link="https://demo.themesberg.com/volt-pro-react/#/messages" target="_blank" badgeText="Pro" icon={faInbox} />*/}

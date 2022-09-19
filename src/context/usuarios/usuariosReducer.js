@@ -1,4 +1,4 @@
-import {OBTENER_USUARIOS, AGREGAR_USUARIO, EDITAR_USUARIO, ELIMINAR_USUARIO, SELECCIONAR_USUARIO, DESELECCIONAR_USUARIO, VER_USUARIO, ERROR_USUARIO, REINICIAR_MENSAJE } from '../../types'
+import {GET_USERS, ADD_USER, SHOW_USER, SELECT_USER, UNSELECT_USER, ERROR_USER, DELETE_USER, EDIT_USER} from '../../types'
 
 export default (state, action)=>{
     
@@ -7,45 +7,41 @@ export default (state, action)=>{
 
     switch(action.type){
         
-        case AGREGAR_USUARIO: return{
+        case ADD_USER: return{
             ...state,
             mensaje:null,
             usuarios:[...state.usuarios, action.payload],
         } 
-        case EDITAR_USUARIO: return{
+        case EDIT_USER: return{
             ...state,
             usuarios: state.usuarios.map(usuario => usuario.usuarioId===action.payload.usuarioId ? action.payload : usuario ),
         }
-        case ELIMINAR_USUARIO: return {
+        case DELETE_USER: return {
             ...state,
             usuarios: state.usuarios.filter( usuario => usuario.usuarioId!==action.payload.idEliminado ),
             mensaje:action.payload.alerta,
         }  
-        case OBTENER_USUARIOS: return{
+        case GET_USERS: return{
             ...state,
             mensaje:null,
             usuarios: action.payload,
             cantidadUsuarios:action.payload.length
         }  
-        case VER_USUARIO: return {
+        case SHOW_USER: return {
             ...state,
             usuarioSeleccionado:action.payload.usuario,
             mostrar:action.payload.estado
         }
-        case SELECCIONAR_USUARIO: return{
+        case SELECT_USER: return{
             ...state,
             usuarioSeleccionado:action.payload    
         }
-        case DESELECCIONAR_USUARIO: return {
+        case UNSELECT_USER: return {
             ...state,  
         }
-        case ERROR_USUARIO: return{
+        case ERROR_USER: return{
             ...state,
             mensaje:action.payload.msg 
-        }
-        case REINICIAR_MENSAJE: return{
-            ...state,
-            mensaje:null
         }
         default:
             return state;

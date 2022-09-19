@@ -18,9 +18,14 @@ export const Routes = {
     ServerError: { path: "/examples/500" },
 
     //MIS RUTAS
-    Usuarios: {path:"/qr"},
     Login:{ path:"/login"},
-    Registro: {path:"/registro"},
+    Users: {path:"/users"},
+    UserRegistry: {path:"/user_registry"},
+    Entrance:{path:"/Entrance"},
+    Personal:{path:"/Personal"},
+    PersonalRegistry:{path:"/personal_registry"},
+    
+    
     RegistroQrReader: {path:"/registroQrReader"},
     RegistroQrScanner: {path:"/registroQrScanner"},
 
