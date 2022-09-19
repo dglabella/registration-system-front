@@ -1,19 +1,19 @@
 import React, {useReducer} from 'react';
-import alertaReducer from './alertaReducer';
-import alertaContext from './alertaContext';
-import {MOSTRAR_ALERTA, OCULTAR_ALERTA} from '../../types';
+import AlertaReducer from './alertReducer';
+import AlertaContext from './alertContext';
+import {SHOW_ALERT, HIDE_ALERT} from '../../types';
 
 const AlertaState = (props) => {
 
     const initialState={
-        alerta:null
+        alert:null
     }
 
-    const [state,dispatch]=useReducer(alertaReducer, initialState);
+    const [state,dispatch]=useReducer(AlertaReducer, initialState);
 
-    const mostrarAlerta = (msg, categoria)=>{
+    const showAlert = (msg, categoria)=>{
         dispatch ({
-                    type:MOSTRAR_ALERTA,
+                    type:SHOW_ALERT,
                     payload: {
                         msg:msg,
                         categoria:categoria
@@ -22,7 +22,7 @@ const AlertaState = (props) => {
         //Limpia la alerta despues de 2 segundos
         setTimeout(()=>{
                 dispatch({
-                    type:OCULTAR_ALERTA
+                    type:HIDE_ALERT
                 });    
         }, 2000);
     }    
@@ -30,14 +30,14 @@ const AlertaState = (props) => {
     
 
     return(
-        <alertaContext.Provider
+        <AlertaContext.Provider
             value={{
-                alerta:state.alerta,
-                mostrarAlerta
+                alert:state.alert,
+                showAlert:showAlert
             }}
         >
             {props.children}
-        </alertaContext.Provider>
+        </AlertaContext.Provider>
     );    
 }
 

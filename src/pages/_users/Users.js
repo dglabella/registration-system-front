@@ -2,8 +2,8 @@ import React, {Fragment, useState, useContext, useEffect} from 'react';
 import { Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table} from "@themesberg/react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit, faEye, faUserPlus, faCog, faCheck, faSearch, faSlidersH, faUserCog, faFileContract, faFileCode, faFolder } from '@fortawesome/free-solid-svg-icons';
-import UsuariosContext from "../context/usuarios/usuariosContext"
-const Home = () => {
+import UsuariosContext from "../../context/usuarios/usuariosContext";
+const Users = () => {
 
     const contextoUsuarios = useContext(UsuariosContext);
     const {mensaje, usuarios, cantidadUsuarios, obtenerUsuarios, seleccionarUsuario, deseleccionarUsuario, verUsuario, eliminarUsuario, reiniciarMensaje}=contextoUsuarios;
@@ -62,23 +62,28 @@ const Home = () => {
                             </Button>
                         </div>
                     </Col>
-
                 </Row>
-
+                
                 <Card border="light" className="table-wrapper table-responsive shadow-sm">
                     <Card.Body>
                         <Table hover className="user-table align-items-center">
                             <thead className="thead-light">
                                 <tr>
-                                    <th className="border-bottom">Acciones</th>
                                     <th className="border-bottom">Nombre y Apellido</th>
                                     <th className="border-bottom">Estado</th>
-                                    {/*<th className="border-bottom">E-mail</th>*/}
+                                    <th className="border-bottom">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {usuarios.map(u => (
                                     <tr key={u.id}>
+                                        
+                                        <td>
+                                            <span className="fw-normal" as={Button} onClick={()=>{ /*onClickVerCliente(u)*/ }} ><div className="small text-gray">{u.personName}, {u.personLastName}</div></span>                                                  
+                                        </td>
+                                        <td>
+                                            <span className="fw-normal"><div className="small text-gray">{u.active?"ACTIVO":"INACTIVO"}</div></span>
+                                        </td>
                                         <td>
                                             <Dropdown as={ButtonGroup}>
                                                 <Dropdown.Toggle as={Button} split variant="link" className="text-dark m-0 p-0">
@@ -99,17 +104,6 @@ const Home = () => {
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                         </td>
-                                        <td>
-                                            {/*<Card.Link className="d-flex align-items-center">
-                                                <Image src={u.image} className="user-avatar rounded-circle me-3" />
-                                                <div className="d-block">*/}
-                                                    <span className="fw-normal" as={Button} onClick={()=>{ /*onClickVerCliente(u)*/ }} ><div className="small text-gray">{u.nombre}, {u.apellido}</div></span>                                                  
-                                                {/*</div>
-                                            </Card.Link>*/}
-                                        </td>
-                                        <td><span className="fw-normal"><div className="small text-gray">{u.estado}</div></span></td>
-                                        {/*<td><span className="fw-normal"><div className="small text-gray">{u.clienteEmail}</div></span></td>*/}
-                                        {/*<td><span className="fw-normal">{u.dateCreated}</span></td>*/}
                                         
                                     </tr>
                                 ))}
@@ -122,4 +116,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Users;

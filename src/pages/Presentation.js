@@ -90,7 +90,7 @@ export default () => {
             <Navbar.Collapse id="navbar-default-primary">
               <Nav className="navbar-nav-hover align-items-lg-center">
                 <Nav.Link as={HashLink} to={Routes.Login.path}>LogIn</Nav.Link>
-                <Nav.Link as={HashLink} to={Routes.Registro.path}>Registro de Usuarios</Nav.Link>
+                <Nav.Link as={HashLink} to={Routes.UserRegistry.path}>Registro de Usuarios</Nav.Link>
                 <Nav.Link href="https://fmn.unsl.edu.ar/">FCFMyN</Nav.Link>
                 <Nav.Link as={HashLink} to="#download">Quienes Somos...</Nav.Link>
               </Nav>

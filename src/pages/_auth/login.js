@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 
 import { Routes } from "../../routes";
 //import BgImage from "../../assets/img/illustrations/signin.svg";
-import AlertaContext from "../../context/alerta/alertaContext";
+import AlertContext from "../../context/alerta/alertContext";
 import AuthContext from "../../context/autenticacion/authContext";
 import { Alert } from '@themesberg/react-bootstrap';
 
 const Login = (props) => {
 
     //Extraer valores del context
-    const alertaContext=useContext(AlertaContext);
-    const {alerta, mostrarAlerta}=alertaContext;
+    const alertContext=useContext(AlertContext);
+    const {alert, showAlert}=alertContext;
 
     const authContext=useContext(AuthContext);
     const {autenticado, mensaje, iniciarSesion}=authContext;
@@ -35,7 +35,7 @@ const Login = (props) => {
         }   
         //Si usuario o pass estan mal
         if(mensaje){
-            mostrarAlerta(mensaje.msg, mensaje.categoria);
+            showAlert(mensaje.msg, mensaje.categoria);
         }
     },[mensaje, autenticado, props.history]);
 
@@ -103,18 +103,17 @@ const Login = (props) => {
                                         
                                     </Form.Group>
 
-                                    {alerta ? <Alert variant={alerta.categoria}> {alerta.msg} </Alert>: null}
+                                    {alert ? <Alert variant={alert.categoria}> {alert.msg} </Alert>: null}
                                     
                                     <Button variant="primary" type="submit" className="w-100">
                                         Sign in
                                     </Button>
                                 </Form>
-
                                 
                                 <div className="d-flex justify-content-center align-items-center mt-4">
                                     <span className="fw-normal">
                                         Eres Nuevo? 
-                                        <Card.Link as={Link} to={Routes.Registro.path} className="fw-bold">
+                                        <Card.Link as={Link} to={Routes.UserRegistry.path} className="fw-bold">
                                             {`  Crea Tu Usuario`}
                                         </Card.Link>
                                     </span>

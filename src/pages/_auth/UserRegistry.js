@@ -5,15 +5,15 @@ import { Col, Row, Form, Card, Button, Container, InputGroup } from '@themesberg
 import { Link } from 'react-router-dom';
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
-import AlertaContext from "../../context/alerta/alertaContext";
+import AlertaContext from "../../context/alerta/alertContext";
 import AuthContext from "../../context/autenticacion/authContext";
 import { Alert } from '@themesberg/react-bootstrap';
 
-const Registro = (props) => {
+const UserRegistry = (props) => {
 
     //Extraer valores del context
-    const alertaContext=useContext(AlertaContext);
-    const {alerta, mostrarAlerta}=alertaContext;
+    const alertContext=useContext(AlertaContext);
+    const {alert, showAlert}=alertContext;
 
     const authContext=useContext(AuthContext);
     const {autenticado, mensaje, registrarUsuario}=authContext;
@@ -37,17 +37,18 @@ const Registro = (props) => {
         dni: '',
         userName:'',
         password: '',
-        confirmPassword:''
+        confirmPassword:'',
+        privileges:''
     });
 
     useEffect(()=>{
         if(mensaje){
-          mostrarAlerta(mensaje.msg, mensaje.categoria);
+          showAlert(mensaje.msg, mensaje.categoria);
         }  
     },[mensaje]);
 
     // extraigo los datos para utilizarlos más facil
-    const { personName, personLastName, dni, userName, password, confirmPassword } = user;
+    const { personName, personLastName, dni, userName, password, confirmPassword, privileges } = user;
 
     //Toma los cambios en el formulario y actualiza el estado de inicio de Sesión
     const onChange = (e) => {
@@ -64,22 +65,22 @@ const Registro = (props) => {
         
         //Validamos que no haya campos vacios
         if(personName.trim()==='' || personLastName.trim()==='' || dni.trim()==='' || userName.trim()==='' || password.trim()==='' || confirmPassword.trim()===''){
-            mostrarAlerta('Todos Los Campos Son Obligatorios', 'danger');
+            showAlert('Todos Los Campos Son Obligatorios', 'danger');
             return;
         }
         //Validamos que el password tenga 6 caracteres
         if(password.trim().length<6){
-            mostrarAlerta('El password debe ser de al menos 6 caracteres', 'danger');
+            showAlert('El password debe ser de al menos 6 caracteres', 'danger');
             return;
         }
 
         //Validamos que el password y la confirmación sean iguales
         if(password.trim()!== confirmPassword.trim()){
-            mostrarAlerta('El password y su confirmación deben ser iguales', 'danger');
+            showAlert('El password y su confirmación deben ser iguales', 'danger');
             return;    
         }
     
-        registrarUsuario({personName, personLastName, userName, dni, password});
+        registrarUsuario({personName, personLastName, userName, dni, password, privileges});
         //console.log("Submiteando usuario...");
 
     }
@@ -120,6 +121,13 @@ const Registro = (props) => {
                                             <Form.Control autoFocus  type="text" id="dni" name="dni"  value={dni} onChange={onChange} placeholder="Nro. de documento sin puntos" />
                                         </InputGroup>
                                     </Form.Group>
+                                    <Form.Group id="gtipo" className="mb-4">
+                                        <Form.Label>Tipo de Usuario</Form.Label>
+                                        <Form.Select className="w-75" id="privileges" name="privileges" onChange={onChange} defaultValue="0">
+                                            <option value="Usuario" defaultChecked>Usuario</option>
+                                            <option value="Administrador">Administrador</option>
+                                        </Form.Select>
+                                    </Form.Group>
                                     <Form.Group id="gusuario" className="mb-4">
                                         <Form.Label>Usuario</Form.Label>
                                         <InputGroup>
@@ -145,7 +153,7 @@ const Registro = (props) => {
                                         </InputGroup>
                                     </Form.Group>
                                     
-                                    {alerta ? <Alert variant={alerta.categoria}> {alerta.msg} </Alert>: null}
+                                    {alert ? <Alert variant={alert.categoria}> {alert.msg} </Alert>: null}
 
                                     <Button variant="primary" type="submit" className="w-100">
                                         Registrar Usuario
@@ -169,4 +177,4 @@ const Registro = (props) => {
     )
 }
 
-export default Registro;
+export default UserRegistry;

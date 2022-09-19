@@ -18,9 +18,12 @@ import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
 
 //MIS PAGINAS
-import Usuarios from './Usuarios';
+import Users from './_users/Users';
 import Login from "./_auth/login";
-import Registro from "./_auth/registro";
+import UserRegistry from "./_auth/UserRegistry";
+import Entrance from "./_Entrance/Entrance";
+import Personal from "./_Personal/Personal";
+
 import RegistroQrScanner from './_registroQrScanner/RegistroQrScanner';
 import RegistroQrReader from './_registroQrReader/RegistroQrReader';
 
@@ -98,7 +101,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
         <main className="content">
           <Navbar />
           <Component {...props} />
-          <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
+          <Footer toggleSettings={toggleSettings} showSettings={showSettings}/>
         </main>
       </>
     )}
@@ -125,11 +128,14 @@ export default () => (
     <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
     
     {/*-----------------------------------------   MIS   RUTAS    -------------------------------------------------------*/}
-    <RouteWithSidebar exact path={Routes.Usuarios.path} component={Usuarios} />
-    <RouteWithLoader exact path={Routes.Registro.path} component={Registro} />
+    <RouteWithLoader exact path={Routes.Login.path} component={Login} /> 
+    <RouteWithSidebar exact path={Routes.Users.path} component={Users} />
+    <RouteWithLoader exact path={Routes.UserRegistry.path} component={UserRegistry} />
+    <RouteWithSidebar exact path={Routes.Entrance.path} component={Entrance}/>
+    <RouteWithSidebar exact path={Routes.Personal.path} component={Personal}/>
     <RouteWithSidebar exact path={Routes.RegistroQrReader.path} component={RegistroQrReader} />
     <RouteWithSidebar exact path={Routes.RegistroQrScanner.path} component={RegistroQrScanner} />
-    <RouteWithLoader exact path={Routes.Login.path} component={Login} /> 
+    
 
 
     {/* components */}
