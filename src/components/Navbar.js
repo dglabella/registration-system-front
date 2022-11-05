@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faEnvelopeOpen, faSearch, faSignOutAlt, faUserShield, faIdCardAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
@@ -8,9 +8,13 @@ import { Row, Col, Nav, Form, Image, Navbar, Dropdown, Container, ListGroup, Inp
 import NOTIFICATIONS_DATA from "../data/notifications";
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 import { Routes } from "../routes";
+import AuthContext from '../context/autenticacion/authContext';
 
 
 export default (props) => {
+
+  const authContext=useContext(AuthContext);
+  const {usuario, usuarioAutenticado, cerrarSesion, paginaActual}=authContext;
  
   const salir = ()=>{
     //cerrarSesion();
@@ -19,9 +23,17 @@ export default (props) => {
   }
 
   return (
+
     <Navbar variant="dark" expanded className="ps-0 pe-2 pb-0">
       <Container fluid className="px-0">
-        <div className="d-flex justify-content-end w-100">
+
+        <div className="media d-flex align-items-center">
+          <div className="media-body ms-2 text-dark align-items-center d-none d-sm-block">
+            <span className="mb-0  fw-bold"> {paginaActual}  </span>
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-end w-50">
           {/*<div className="d-flex align-items-center">
             <Form className="navbar-search">
               <Form.Group id="topbarSearch">

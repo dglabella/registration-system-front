@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 
 import { Routes } from "../../routes";
 //import BgImage from "../../assets/img/illustrations/signin.svg";
-import AlertContext from "../../context/alerta/alertContext";
+import AlertaContext from "../../context/alerta/alertaContext";
 import AuthContext from "../../context/autenticacion/authContext";
 import { Alert } from '@themesberg/react-bootstrap';
 
 const Login = (props) => {
 
     //Extraer valores del context
-    const alertContext=useContext(AlertContext);
-    const {alert, showAlert}=alertContext;
+    const alertaContext=useContext(AlertaContext);
+    const {alerta, mostrarAlerta}=alertaContext;
 
     const authContext=useContext(AuthContext);
     const {autenticado, mensaje, iniciarSesion}=authContext;
@@ -35,7 +35,7 @@ const Login = (props) => {
         }   
         //Si usuario o pass estan mal
         if(mensaje){
-            showAlert(mensaje.msg, mensaje.categoria);
+            mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
     },[mensaje, autenticado, props.history]);
 

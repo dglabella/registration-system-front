@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit, faEye, faUserPlus, faCog, faCheck, faSearch, faSlidersH, faUserCog, faFileContract, faFileCode, faFolder, faDoorOpen, faQrcode } from '@fortawesome/free-solid-svg-icons';
 import PersonalContext from "../../context/personal/personalContext";
-import AlertContext from "../../context/alerta/alertContext";
+import AlertaContext from "../../context/alerta/alertaContext";
 import { Alert } from '@themesberg/react-bootstrap';
 import { QrReader } from 'react-qr-reader';
 
@@ -19,8 +19,8 @@ const Entrance = () => {
         parameter: ''
     });
 
-    const alertContext = useContext(AlertContext);
-    const { alert, showAlert } = alertContext;
+    const alertaContext = useContext(AlertaContext);
+    const { alerta, mostrarAlerta } = alertaContext;
 
     const { parameter, searchType } = searchParameter;
 
@@ -41,7 +41,7 @@ const Entrance = () => {
 
     useEffect(() => {
         if (message) {
-            showAlert(message.msg, message.categoria);
+            mostrarAlerta(message.msg, message.categoria);
         }
     }, [message]);
 

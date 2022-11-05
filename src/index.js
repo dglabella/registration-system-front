@@ -20,6 +20,9 @@ import { HashRouter, BrowserRouter } from "react-router-dom";
 // core styles
 import "./scss/volt.scss";
 
+//mis estilos
+import './scss/misEstilos.css';
+
 // vendor styles
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
@@ -31,7 +34,7 @@ import ScrollToTop from "./components/ScrollToTop";
 //----------------- MIS IMPORTS -----------------------------------------------//
 import UsuariosState from "./context/usuarios/usuariosState";
 import PersonalState from './context/personal/personalState';
-import AlertState from "./context/alerta/alertState";
+import AlertaState from "./context/alerta/alertaState";
 import AuthState from "./context/autenticacion/authState";
 import DependenciesState from "./context/dependencies/dependenciesState";
 
@@ -39,14 +42,14 @@ ReactDOM.render(
   <DependenciesState>
     <PersonalState>
       <UsuariosState>
-        <AlertState>
+        <AlertaState>
           <AuthState>
             <BrowserRouter>
               <ScrollToTop />
               <HomePage />
             </BrowserRouter>
           </AuthState>
-        </AlertState>
+        </AlertaState>
       </UsuariosState>
     </PersonalState>
   </DependenciesState>,

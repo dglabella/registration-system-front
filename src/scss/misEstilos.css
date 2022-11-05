@@ -1,0 +1,89 @@
+.small-font{
+  font-size: small  
+}
+
+.button-small-font{
+  font-size: x-small  
+}
+
+.very-small-font{
+  font-size: xx-small  
+}
+
+.ultra-small-font{
+  font-size: 0.5rem;  
+}
+
+.custom-modal-style {
+  width: 700px;
+  height: 500px;
+}
+
+/*Utilizado en Paginas Utilidades (Art)*/
+.my-custom-scrollbar-utilidades {
+  position: relative;
+  height: 460px;
+  overflow: auto;
+}
+
+.my-custom-utilidades {
+  /*position: relative;*/
+  height: 465px;
+  /*overflow: auto;*/
+}
+
+/*Utilizado en Pagina Casos*/
+.my-custom-scrollbar {
+  position: relative;
+  height: 442px;
+  overflow: auto;
+}
+
+/*Utilizado en Pagina Casos y ART*/
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+/* Utilizado en casos_cliente*/
+.my-custom-scrollbar-casos {
+  position: relative;
+  height: 150px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y-casos {
+  display: block;
+}
+
+.fixed_header {
+  /*width: 400px;*/
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixed_header tbody {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  height: 350px;
+}
+
+.fixed_header thead tr {
+  display: block;
+  text-align: left;
+}
+
+.fixed_header thead {
+  background: black;
+  color: #fff;
+}
+
+.fixed_header th,
+.fixed_header td {
+  padding: 5px;
+  text-align: left;
+
+  /*width: 200px;*/
+  width: 100%;
+}

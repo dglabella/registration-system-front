@@ -5,15 +5,15 @@ import { Col, Row, Form, Card, Button, Container, InputGroup } from '@themesberg
 import { Link } from 'react-router-dom';
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
-import AlertaContext from "../../context/alerta/alertContext";
+import AlertaContext from "../../context/alerta/alertaContext";
 import AuthContext from "../../context/autenticacion/authContext";
 import { Alert } from '@themesberg/react-bootstrap';
 
 const UserRegistry = (props) => {
 
     //Extraer valores del context
-    const alertContext=useContext(AlertaContext);
-    const {alert, showAlert}=alertContext;
+    const alertaContext=useContext(AlertaContext);
+    const {alerta, mostrarAlerta}=alertaContext;
 
     const authContext=useContext(AuthContext);
     const {autenticado, mensaje, registrarUsuario}=authContext;
@@ -43,7 +43,7 @@ const UserRegistry = (props) => {
 
     useEffect(()=>{
         if(mensaje){
-          showAlert(mensaje.msg, mensaje.categoria);
+          mostrarAlerta(mensaje.msg, mensaje.categoria);
         }  
     },[mensaje]);
 
@@ -65,18 +65,18 @@ const UserRegistry = (props) => {
         
         //Validamos que no haya campos vacios
         if(personName.trim()==='' || personLastName.trim()==='' || dni.trim()==='' || userName.trim()==='' || password.trim()==='' || confirmPassword.trim()===''){
-            showAlert('Todos Los Campos Son Obligatorios', 'danger');
+            mostrarAlerta('Todos Los Campos Son Obligatorios', 'danger');
             return;
         }
         //Validamos que el password tenga 6 caracteres
         if(password.trim().length<6){
-            showAlert('El password debe ser de al menos 6 caracteres', 'danger');
+            mostrarAlerta('El password debe ser de al menos 6 caracteres', 'danger');
             return;
         }
 
         //Validamos que el password y la confirmación sean iguales
         if(password.trim()!== confirmPassword.trim()){
-            showAlert('El password y su confirmación deben ser iguales', 'danger');
+            mostrarAlerta('El password y su confirmación deben ser iguales', 'danger');
             return;    
         }
     

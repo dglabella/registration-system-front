@@ -1,6 +1,6 @@
 
 import React, {useReducer} from 'react';
-import {REGISTRO_EXITOSO, REGISTRO_ERROR, OBTENER_USUARIO, LOGIN_EXITOSO, LOGIN_ERROR, CERRAR_SESION } from '../../types';
+import {REGISTRO_EXITOSO, REGISTRO_ERROR, OBTENER_USUARIO, LOGIN_EXITOSO, LOGIN_ERROR, CERRAR_SESION, SET_PAGINA_ACTUAL } from '../../types';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 import clienteAxios from '../../config/axios';
@@ -12,7 +12,8 @@ const AuthState = (props) => {
         token: localStorage.getItem('token'),
         autenticado:null,
         usuario:null,
-        mensaje:null
+        mensaje:null,
+        paginaActual:''
     };
 
     const [state, dispatch]=useReducer(AuthReducer, initialState);   
@@ -96,6 +97,13 @@ const AuthState = (props) => {
         }
     }
 
+    const setPaginaActual=(nombre)=>{
+        dispatch({
+            type:SET_PAGINA_ACTUAL,
+            payload:nombre
+        })
+    }
+
     //Cierra la sesión del usuario
     const cerrarSesion = () => {
         dispatch({
@@ -110,10 +118,12 @@ const AuthState = (props) => {
                 autenticado:state.autenticado,
                 usuario:state.usuario,
                 mensaje:state.mensaje,
-                registrarUsuario,
-                iniciarSesion,
+                paginaActual:state.paginaActual,
+                registrarUsuario:registrarUsuario,
+                iniciarSesion:iniciarSesion,
                 //usuarioAutenticado,
-                cerrarSesion
+                setPaginaActual:setPaginaActual,
+                cerrarSesion:cerrarSesion
             }}
         >
             {props.children}
