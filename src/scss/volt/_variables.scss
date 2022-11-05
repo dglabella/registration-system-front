@@ -72,7 +72,9 @@ $default:       #262B40;
 $primary:       #262B40;
 $secondary:     #61DAFB;
 $tertiary:      #1B998B;
-$quaternary:    #C96480;
+$quaternary:    #E10049;
+$quinto:        #FF9F89;
+//$quaternary:    #C96480;
 
 // Series names and colors. This can be extended or customized as desired. Just add more series and colors.
 $ct-series-names: (a, b, c, d, e, f, g) !default;
@@ -143,6 +145,7 @@ $theme-colors: map-merge((
   "secondary":     $secondary,
   "tertiary":      $tertiary,
   "quaternary":    $quaternary,
+  "quinto":        $quinto,
   "primary-app":   $primary-app,
   "secondary-app": $secondary-app,
   "light":         $light,

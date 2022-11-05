@@ -39,6 +39,8 @@
 
     td,
     th {
+        padding-top   : .25rem; //CRISTIAN 03/11/2022
+        padding-bottom: .25rem; //CRISTIAN 03/11/2022
         font-size  : $table-body-font-size;
         white-space: nowrap;
     }

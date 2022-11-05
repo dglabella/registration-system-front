@@ -1,4 +1,4 @@
-import {REGISTRO_EXITOSO, REGISTRO_ERROR, OBTENER_USUARIO, LOGIN_EXITOSO, LOGIN_ERROR, CERRAR_SESION } from '../../types';
+import {REGISTRO_EXITOSO, REGISTRO_ERROR, OBTENER_USUARIO, LOGIN_EXITOSO, LOGIN_ERROR, CERRAR_SESION, SET_PAGINA_ACTUAL, UNSET_PAGINA_ACTUAL } from '../../types';
 
 export default (state, action)=>{
 
@@ -31,6 +31,14 @@ export default (state, action)=>{
                 ...state,
                 usuario:action.payload, 
                 autenticado:true
+        }
+        case SET_PAGINA_ACTUAL: return {
+            ...state,
+            paginaActual: action.payload
+        }
+        case UNSET_PAGINA_ACTUAL: return {
+            ...state,
+            paginaActual: ''
         } 
 
         default: return state;

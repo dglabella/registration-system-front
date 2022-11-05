@@ -18,7 +18,7 @@ const DependenciesState = (props) => {
     const getDependencies = async () => {
         try {
             const result = await clienteAxios.get('/dependencies');
-            console.log(result.data);
+            //console.log(result.data);
             dispatch({
                 type: GET_DEPENDENCIES,
                 payload: result.data
